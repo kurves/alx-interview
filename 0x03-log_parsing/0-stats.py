@@ -5,6 +5,7 @@ Script that reads stdin line by line and computes metrics.
 
 import sys
 
+
 def print_stats(total_size, status_codes):
     """
     Prints the accumulated metrics.
@@ -13,6 +14,7 @@ def print_stats(total_size, status_codes):
     for code in sorted(status_codes.keys()):
         if status_codes[code] > 0:
             print("{}: {}".format(code, status_codes[code]))
+
 
 def main():
     """
@@ -58,6 +60,7 @@ def main():
         raise
 
     print_stats(total_size, status_codes)
+
 
 if __name__ == "__main__":
     main()
