@@ -34,13 +34,3 @@ def validUTF8(data):
         num_bytes -= 1
 
     return num_bytes == 0
-
-
-# Example usage:
-if __name__ == "__main__":
-    data = [197, 130, 1]  # Valid UTF-8
-    print(validUTF8(data))  # Output: True
-
-    data = [235, 140, 4]  # Invalid UTF-8
-    print(validUTF8(data))  # Output: False
-
