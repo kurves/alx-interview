@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 import sys
 
+
 def print_solutions(solutions):
     """Print the solutions in the required format."""
     for solution in solutions:
         print(solution)
+
 
 def is_safe(board, row, col):
     """Check if it's safe to place a queen at board[row][col]."""
@@ -14,6 +16,7 @@ def is_safe(board, row, col):
            board[i] + i == col + row:
             return False
     return True
+
 
 def solve_nqueens(N):
     """Solve the N-Queens problem and return all solutions."""
@@ -33,6 +36,7 @@ def solve_nqueens(N):
     backtrack()
     return solutions
 
+
 def main():
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
@@ -50,6 +54,7 @@ def main():
 
     solutions = solve_nqueens(N)
     print_solutions(solutions)
+
 
 if __name__ == "__main__":
     main()
