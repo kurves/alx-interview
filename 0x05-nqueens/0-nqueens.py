@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
+"""
+nqueen solution using backtracking
+"""
+
 import sys
 
-"""nqueen solution using backtracking"""
 
 def print_solutions(solutions):
     """Print the solutions in the required format."""
