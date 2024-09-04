@@ -1,10 +1,21 @@
 #!/usr/bin/node
 
-import request
+const movieId = process.argv[2];
+const url = `https://swapi-api.hbtn.io/api/films/${movieId}/`;
 
 const request = require('request');
-request('http://www.google.com', function (error, response, body) {
-  console.error('error:', error); // Print the error if one occurred
-  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  console.log('body:', body); // Print the HTML for the Google homepage.
+
+request(url, (error, response, body) => {
+  if (!error && response.statusCode === 200) {
+    const characters = JSON.parse(body).characters;
+    characters.forEach((character) => {
+      request(character, (err, resp, body) => {
+        if (!err && resp.statusCode === 200) {
+          console.log(JSON.parse(body).name);
+        }
+      });
+    });
+  } else {
+    console.error('Error:', error);
+  }
 });
