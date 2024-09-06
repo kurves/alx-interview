@@ -4,7 +4,6 @@ const movieId = process.argv[2];
 const url = `https://swapi-api.hbtn.io/api/films/${movieId}/`;
 const request = require('request');
 
-
 request(url, (error, response, body) => {
   if (!error && response.statusCode === 200) {
     const characters = JSON.parse(body).characters;
@@ -22,8 +21,7 @@ request(url, (error, response, body) => {
       });
     });
 
-
-Promise.all(characterPromises)
+    Promise.all(characterPromises)
       .then((characterNames) => {
         characterNames.forEach((name) => console.log(name));
       })
