@@ -21,3 +21,14 @@ request(url, (error, response, body) => {
         });
       });
     });
+
+
+Promise.all(characterPromises)
+      .then((characterNames) => {
+        characterNames.forEach((name) => console.log(name));
+      })
+      .catch((err) => console.error('Error fetching character:', err));
+  } else {
+    console.error('Error:', error);
+  }
+});
