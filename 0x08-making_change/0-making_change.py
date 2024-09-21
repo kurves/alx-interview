@@ -1,5 +1,13 @@
 #!/usr/bin/python3
+
+"""
+make change module api
+"""
+
 def makeChange(coins, total):
+    """
+    make change function
+    """
     if total <= 0:
         return 0
     
@@ -11,4 +19,3 @@ def makeChange(coins, total):
             dp[i] = min(dp[i], dp[i - coin] + 1)
     
     return dp[total] if dp[total] != float('inf') else -1
-
