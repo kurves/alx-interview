@@ -1,7 +1,14 @@
 #!/usr/bin/python3
 
 
+"""
+Prime Game Module
+"""
 def isWinner(x, nums):
+    """
+    Winner of a game based on
+    strategic removal of prime numbers
+    """
     if x < 1 or not nums:
         return None
     max_n = max(nums)
