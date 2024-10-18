@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module to validate UTF-8 encoding.
+This module defines a function to validate UTF-8 encoding.
 """
 
 
@@ -17,20 +17,17 @@ def validUTF8(data):
         byte = byte & 0xFF
 
         if num_bytes == 0:
-            if (byte & mask1) == 0:
-                continue  # 1-byte character
-            elif (byte & (mask1 >> 1)) == mask1:
+            if (byte >> 5) == 0b110:  # 2-byte character
                 num_bytes = 1
-            elif (byte & (mask1 >> 2)) == mask1 >> 1:
+            elif (byte >> 4) == 0b1110:  # 3-byte character
                 num_bytes = 2
-            elif (byte & (mask1 >> 3)) == mask1 >> 2:
+            elif (byte >> 3) == 0b11110:  # 4-byte character
                 num_bytes = 3
-            else:
-                return False  # Invalid starting byte
+            elif (byte >> 7):  # Invalid 1-byte character (should start with 0)
+                return False
         else:
             if not (byte & mask1 and not (byte & mask2)):
                 return False
-
-        num_bytes -= 1
+            num_bytes -= 1
 
     return num_bytes == 0
