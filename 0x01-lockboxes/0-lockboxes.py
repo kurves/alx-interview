@@ -3,13 +3,13 @@
 This module defines a function to check if all boxes can be unlocked.
 """
 
+
 def canUnlockAll(boxes):
     """
     Determines if all the boxes can be opened.
     """
     if not boxes:
         return False
-    
     n = len(boxes)
     unlocked = [False] * n  # To keep track of unlocked boxes
     unlocked[0] = True  # The first box is always unlocked
